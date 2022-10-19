@@ -8,37 +8,3 @@ html {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
 }
-
-.contact__title {
-  font-weight: 500;
-  font-size: 44px;
-  text-align: center;
-}
-
-.contact__submit-btn {
-  background: linear-gradient(45deg, #4c74e6, #8c54e9) !important;
-  border: none;
-  padding: 0.25rem 1.25rem;
-}
-
-.contact-form {
-  background: url("../img/contact-form_bg.jpg") no-repeat center/cover;
-}
-
-.header__breadcrumb {
-  list-style: none;
-  background: linear-gradient(180deg, #4c74e6, #8c54e9);
-}
-
-.header__breadcrumb li {
-  display: inline-block;
-  padding: 0.2rem 0.8rem;
-  border-right: 2px solid white;
-  border-radius: 0 10px 10px 0;
-  box-shadow: 8px 0 8px -8px rgb(0 0 0 / 60%);
-}
-
-.header__breadcrumb li a {
-  color: white;
-  text-decoration: none;
-}
