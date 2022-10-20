@@ -1,8 +1,137 @@
-/*==================================Text======================================*/
-/*=================================Weight=====================================*/
+*,
+*:before,
+*:after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
 
-/*=============================TextTemplates==================================*/
+html, body{
+  min-height: 100vh;
+}
+/*=================================Colors=====================================*/
+:root {
+  --theme-main: #000;
+  --theme-accent: #2D66EE;
+  --theme-accent-light: #306FF5;
+  --theme-gray: #F2F4F7;
+  --theme-gray-900: #101828;
+  --theme-gray-500: #667085;
+  --theme-gray-400: #98A2B3;
+}
+/*===================================Text=====================================*/
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 144%;
+}
 
+h2 {
+  font-size: 20px;
+  line-height: 120%;
+}
+
+h3 {
+  font-size: 15px;
+}
+
+h4 {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+input {
+  font-family: "SF Pro Text", sans-serif;
+}
+/*
+svg {
+  width: 0;
+  height: 0;
+} */
+/*==============================TextTemplate==================================*/
+.font-weight-700 {
+  font-weight: 700;
+}
+
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.font-weight-500 {
+  font-weight: 500;
+}
+
+.font-weight-400 {
+  font-weight: 400;
+}
+
+.font-size-17 {
+  font-size: 17px;
+}
+
+.font-size-20 {
+  font-size: 20px;
+}
+
+.font-accent {
+  font-family: "Inter", sans-serif;
+}
+
+.text-accent {
+  color: var(--theme-accent-light);
+}
 /*================================Buttons=====================================*/
+.blue-btn {
+  outline: none;
+  background-color: var(--theme-accent);
+  border-radius: 8px;
+  border: 4px solid transparent;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 7px 20px;
+  cursor: pointer;
+  transition: all .3s ease;
+}
 
+.blue-btn:hover {
+  border: 4px solid #E0EAFF;
+  transition: all .3s ease;
+}
+
+.blue-btn:focus {
+  border: 1px solid #00000029;
+  padding: 10px 23px;
+}
 /*=================================Fields=====================================*/
+.contact__field_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact__field_box label {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--theme-gray-500);
+  padding-bottom: 8px;
+}
+
+.main-field {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 0.7px solid #D0D5DD;
+  padding-bottom: 8px;
+  font-size: 17px;
+  color: var(--theme-gray-900);
+}
