@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1">
     <title>IT Website</title>
-    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/style.min.css">
   </head>
   <body>
     <div class="wrapper">
       <header class="header">
         <div class="header__wrapper container">
+          <div class="header__burger">
+            <svg width="28" height="20"><use xlink:href="assets/icons/sprite.svg#icon-menu"></use></svg>
+          </div>
           <h1 class="header__logo text-accent font-accent"><a href="index.html">IT WEBSITE</a></h1>
           <nav>
             <ul class="header__menu font-weight-500">
@@ -47,6 +50,7 @@
               <input class="blue-btn" type="submit" value="Get consultation">
             </form>
           </div>
+          <div class="main__bg"></div>
         </div>
       </section>
       <section class="development">
@@ -63,7 +67,7 @@
           </div>
           <div class="development__menu font-size-20">
             <ul>
-              <li><a href="#">iOS  development</a></li>
+              <li><a href="#">IOS  development</a></li>
               <li><a href="#">Android development</a></li>
               <li><a href="#">Web development</a></li>
               <li><a href="#">UI/UX design</a></li>
@@ -232,7 +236,7 @@
                 <input class="main-field" type="text" name="username" placeholder="Your full name">
               </div>
               <div class="contact__field_box">
-                <label>email</label>
+                <label>Email</label>
                 <input class="main-field" type="text" name="useremail" placeholder="mail@mail.com">
               </div>
               <input class="blue-btn" type="submit" value="Send me ebook to my mail">

@@ -1,0 +1,154 @@
+
+/*===================================Main=====================================*/
+.main {
+  padding-top: 80px;
+  padding-bottom: 270px;
+  overflow: hidden;
+  background: var(--theme-gray);
+
+  @include medium-screen {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  &__bg {
+    position: absolute;
+    top: -30%;
+    left: 62%;
+    width: 50%;
+    height: 200%;
+    transform: rotate(-12deg);
+    z-index: -1;
+
+    @include medium-screen {
+      top: -45%;
+      width: 55%;
+    }
+
+    @include custom-screen(680) {
+      top: -50%;
+      width: 80%;
+    }
+
+    @include custom-screen(540) {
+      top: -30%;
+      left: 30%;
+      width: 60%;
+    }
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 47%;
+      height: 100%;
+    }
+
+    &::before {
+      background: url(../img/main_bg_left.png) 100% 50% / 100% repeat-y;
+      right: 50%;
+      animation: main_bg_left 3600s linear infinite;
+
+      @include medium-screen {
+        animation: initial;
+      }
+
+      @include custom-screen(540) {
+        background: url(../img/main_bg_left.png) 100% 50% / 100% no-repeat;
+      }
+
+      @keyframes main_bg_left {
+        0% { background-position-y: 50%; }
+        100% { background-position-y: 18000%; }
+      }
+    }
+
+    &::after {
+      background: url(../img/main_bg_right.png) 100% 50% / 100% repeat-y;
+      right: 0;
+      animation: main_bg_right 3600s linear infinite;
+
+      @include custom-screen(540) {
+        background: url(../img/main_bg_right.png) 100% 50% / 100% no-repeat;
+      }
+
+      @include medium-screen {
+        animation: initial;
+      }
+
+      @keyframes main_bg_right {
+        0% { background-position-y: 50%; }
+        100% { background-position-y: -18000%; }
+      }
+    }
+  }
+}
+
+.main__wrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding-top: 80px;
+  z-index: 1;
+}
+
+.main__title {
+  width: 50%;
+  padding-bottom: 64px;
+
+  @include medium-screen {
+    padding-bottom: 32px;
+    width: 55%;
+  }
+
+  @include custom-screen(540) {
+    width: 100%;
+  }
+
+  h1 {
+    padding-bottom: 24px;
+  }
+}
+
+.main__contact {
+  flex-direction: column;
+  width: 676px / $container-width * 100%;
+
+  @include large-screen {
+    width: 382px;
+  }
+
+  @include custom-screen(540) {
+    margin-top: 105%;
+    width: 100%;
+  }
+
+  h2 {
+    padding-bottom: 32px;
+    width: 75%;
+
+    @include large-screen {
+      width: 90%;
+    }
+  }
+
+  &__form {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+
+    @include large-screen {
+      flex-direction: column;
+      gap: 32px;
+
+      & .blue-btn {
+        font-size: 14px;
+        max-width: 170px;
+      }
+
+      & .main-field {
+        max-width: 224px;
+      }
+    }
+  }
+}

@@ -1,44 +1,87 @@
-*,
-*:before,
-*:after{
+@mixin small-screen {
+   @media (max-width: #{$screen-sm-max}) {
+       @content;
+   }
+}
+
+@mixin medium-screen {
+   @media (max-width: #{$screen-md-max}) {
+       @content;
+   }
+}
+
+@mixin large-screen {
+   @media (max-width: #{$screen-lg-max}) {
+       @content;
+   }
+}
+
+@mixin custom-screen($screen) {
+   @media (max-width: $screen+'px') {
+       @content;
+   }
+}
+/*===================================Null=====================================*/
+*, *:before, *:after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
 
-html, body{
+html, body {
   min-height: 100vh;
 }
-/*=================================Colors=====================================*/
-:root {
-  --theme-accent: #2D66EE;
-  --theme-accent-light: #306FF5;
-  --theme-main: #101828;
-  --theme-white: #FFF;
-  --theme-gray: #F2F4F7;
-  --theme-gray-900: #101828;
-  --theme-gray-800: #1D2939;
-  --theme-gray-700: #344054;
-  --theme-gray-600: #475467;
-  --theme-gray-500: #667085;
-  --theme-gray-400: #98A2B3;
+
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+  background: var(--theme-white);
+}
+
+body {
+  font-family: 'SF Pro Text', sans-serif;
+  color: var(--theme-main);
+  max-width: 100vw;
+  height: 100%;
+  min-width: 320px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: $container-width;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 80px 0;
+
+  @include medium-screen {
+    padding: 32px 0;
+  }
 }
 /*===================================Text=====================================*/
-/* h2, h3, h4 {
-  font-weight: 400;
-} */
-
 h1 {
   font-size: 36px;
   font-weight: 700;
   line-height: 144%;
+
+  @include medium-screen {
+    font-size: 28px;
+  }
 }
 
 h2 {
   font-size: 20px;
   line-height: 120%;
   font-weight: 600;
+
+  @include medium-screen {
+    font-size: 16px;
+  }
 }
 
 h3 {
@@ -112,16 +155,20 @@ input {
   padding: 7px 20px;
   cursor: pointer;
   transition: all .3s ease;
-}
 
-.blue-btn:hover {
-  border: 4px solid #E0EAFF;
-  transition: all .3s ease;
-}
+  &:hover {
+    border: 4px solid #E0EAFF;
+    transition: all .3s ease;
+  }
 
-.blue-btn:focus {
-  border: 1px solid #00000029;
-  padding: 10px 23px;
+  &:focus {
+    border: 1px solid #00000029;
+    padding: 10px 23px;
+  }
+
+  @include medium-screen {
+    font-size: 14px;
+  }
 }
 /*=================================Fields=====================================*/
 .white-box {
@@ -130,19 +177,23 @@ input {
   padding: 24px;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08), 0px 0px 24px rgba(0, 0, 0, 0.16);
   border-radius: 12px;
+
+  @include medium-screen {
+    padding: 32px;
+  }
 }
 
 .contact__field_box {
   display: flex;
   flex-direction: column;
-}
 
-.contact__field_box label {
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 16px;
-  color: var(--theme-gray-500);
-  padding-bottom: 8px;
+  label {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: var(--theme-gray-500);
+    padding-bottom: 8px;
+  }
 }
 
 .main-field {
@@ -153,4 +204,8 @@ input {
   padding-bottom: 8px;
   font-size: 17px;
   color: var(--theme-gray-900);
+
+  @include medium-screen {
+    font-size: 14px;
+  }
 }
