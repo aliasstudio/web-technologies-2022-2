@@ -17,6 +17,10 @@
   padding: 12px 24px 24px 24px;
   color: var(--theme-white);
 
+  @include small-screen {
+    padding: 36px;
+  }
+
   h4 {
     display: flex;
     align-items: center;
@@ -33,6 +37,23 @@
   justify-content: space-between;
   width: 100%;
   padding: 40px 0;
+
+  @include large-screen {
+    justify-content: space-around;
+    padding: 32px 0;
+  }
+
+  @include custom-screen(680) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 32px;
+    justify-items: center;
+  }
+
+  @include small-screen {
+    grid-column-gap: 16px;
+    grid-row-gap: 32px;
+  }
 }
 
 .footer__menu__box {
@@ -40,16 +61,36 @@
   flex-direction: column;
   width: 100%;
 
+  @include large-screen {
+    max-width: 75%;
+  }
+
+  @include small-screen {
+    max-width: initial;
+  }
+
   span {
     display: flex;
     align-items: center;
     font-weight: 500;
     color: var(--theme-gray-400);
+
+    @include large-screen {
+      min-height: 20px;
+    }
+
+    @include medium-screen {
+      font-size: 14px;
+    }
   }
 
   h3 {
     margin-top: 8px;
     font-weight: 600;
+
+    @include medium-screen {
+      font-size: 14px;
+    }
   }
 
   svg {

@@ -1,3 +1,27 @@
+@mixin small-screen {
+   @media (max-width: #{$screen-sm-max}) {
+       @content;
+   }
+}
+
+@mixin medium-screen {
+   @media (max-width: #{$screen-md-max}) {
+       @content;
+   }
+}
+
+@mixin large-screen {
+   @media (max-width: #{$screen-lg-max}) {
+       @content;
+   }
+}
+
+@mixin custom-screen($screen) {
+   @media (max-width: $screen+'px') {
+       @content;
+   }
+}
+/*===================================Null=====================================*/
 *, *:before, *:after {
   margin: 0;
   padding: 0;
@@ -12,7 +36,7 @@ html, body {
 .wrapper {
   width: 100%;
   overflow: hidden;
-  background: var(--theme-gray);
+  background: var(--theme-white);
 }
 
 body {
@@ -34,18 +58,30 @@ body {
 
 section {
   padding: 80px 0;
+
+  @include medium-screen {
+    padding: 32px 0;
+  }
 }
 /*===================================Text=====================================*/
 h1 {
   font-size: 36px;
   font-weight: 700;
   line-height: 144%;
+
+  @include medium-screen {
+    font-size: 28px;
+  }
 }
 
 h2 {
   font-size: 20px;
   line-height: 120%;
   font-weight: 600;
+
+  @include medium-screen {
+    font-size: 16px;
+  }
 }
 
 h3 {
@@ -129,6 +165,10 @@ input {
     border: 1px solid #00000029;
     padding: 10px 23px;
   }
+
+  @include medium-screen {
+    font-size: 14px;
+  }
 }
 /*=================================Fields=====================================*/
 .white-box {
@@ -137,6 +177,10 @@ input {
   padding: 24px;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08), 0px 0px 24px rgba(0, 0, 0, 0.16);
   border-radius: 12px;
+
+  @include medium-screen {
+    padding: 32px;
+  }
 }
 
 .contact__field_box {
@@ -160,4 +204,8 @@ input {
   padding-bottom: 8px;
   font-size: 17px;
   color: var(--theme-gray-900);
+
+  @include medium-screen {
+    font-size: 14px;
+  }
 }

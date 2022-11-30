@@ -11,6 +11,7 @@
 
 .header__wrapper {
   display: flex;
+  position: relative;
   height: 54px;
   width: 100%;
   margin-top: 24px;
@@ -25,8 +26,24 @@
 .header__logo {
   font-size: 20px;
 
+  @include medium-screen {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   a:visited {
     color: var(--theme-accent);
+  }
+}
+
+.header__burger {
+  display: none;
+  cursor: pointer;
+
+  @include medium-screen {
+    display: flex;
   }
 }
 
@@ -34,17 +51,37 @@
   display: flex;
   gap: 24px;
 
+  @include medium-screen {
+    display: none;
+  }
+
   a {
     color: var(--theme-main);
+    transition: all .3s ease;
+
+    &:hover {
+      text-shadow: 0 0 0.5px var(--theme-gray-800), 0 0 0.5px var(--theme-gray-800);
+      transition: all .3s ease;
+    }
   }
 }
 
 .header__contact {
   display: flex;
 
+  @include custom-screen(720) {
+    display: none;
+  }
+
   a {
     display: flex;
     align-items: center;
+
+    @include custom-screen(1140) {
+      &:not(:last-child) {
+        display: none;
+      }
+    }
 
     &:first-child {
       margin-right: 16px;
@@ -52,6 +89,10 @@
 
     &:last-child {
       margin-left: 32px;
+
+      @include custom-screen(1140) {
+        margin-left: 0;
+      }
     }
   }
 
