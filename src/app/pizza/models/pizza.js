@@ -1,15 +1,23 @@
+import { PizzaSize } from "./pizza-size.js";
+
 export class Pizza {
   #name = 'none';
   #size = PizzaSize.Small;
   #calories = 0;
   #sum = 0;
   #toppings = [];
+  #image = '';
 
-  constructor(name, size, calories, sum) {
+  constructor(name, size, calories, sum, image) {
     this.#name = name;
     this.#size = size;
     this.#calories = calories;
     this.#sum = sum;
+    this.#image = image;
+  }
+
+  get image() {
+    return '/src/assets/images/' + this.#image;
   }
 
   get name() {
@@ -17,12 +25,11 @@ export class Pizza {
   }
 
   get size() {
-    return this.#size.name;
+    return this.#size;
   }
 
   set size(size) {
     this.#size = size;
-    return;
   }
 
   get calories() {
@@ -35,6 +42,10 @@ export class Pizza {
       });
 
     return calories;
+  }
+
+  getPrice(size) {
+    return this.#sum[size.key];
   }
 
   get sum() {
@@ -55,55 +66,20 @@ export class Pizza {
 
   // Добавить добавку
   addTopping(topping) {
-    if(!this.#toppings.find(x => x.name == topping.name)) {
+    if(!this.#toppings.find(x => x.name === topping.name)) {
       this.#toppings.push(topping);
       return;
     }
-    throw new Error('This topping alredy in pizza!');
+    throw new Error('This topping already in pizza!');
   }
 
   // Убрать добавку
   removeTopping(topping) {
     let index = this.#toppings.indexOf(topping);
-    if(index != -1) {
+    if(index !== -1) {
       this.#toppings.splice(index, 1);
       return;
     }
     throw new Error('Topping does not exist!');
-  }
-}
-
-export class PizzaTopping {
-  #name;
-  #calories;
-  #sum;
-
-  constructor(name, calories, sum) {
-    this.#name = name;
-    this.#calories = calories;
-    this.#sum = sum;
-  }
-
-  get name() {
-    return this.#name;
-  }
-
-  get calories() {
-    return this.#calories;
-  }
-
-  get sum() {
-    return this.#sum;
-  }
-}
-
-export class PizzaSize {
-  static Small = {
-    key: 'small',
-    name: 'Маленькая'
-  }
-  static Big = {
-    key: 'big',
-    name: 'Большая'
   }
 }

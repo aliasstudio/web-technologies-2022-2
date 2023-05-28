@@ -2,6 +2,7 @@ export const PizzaList = [
   {
     key: 'margarita',
     name: 'Маргарита',
+    image: 'margarita.webp',
     calories: {
       small: 400,
       big: 500
@@ -14,6 +15,7 @@ export const PizzaList = [
   {
     key: 'pepperoni',
     name: 'Пепперони',
+    image: 'pepperoni.webp',
     calories: {
       small: 500,
       big: 600
@@ -26,6 +28,7 @@ export const PizzaList = [
   {
     key: 'bavarian',
     name: 'Баварская',
+    image: 'bavarian.webp',
     calories: {
       small: 450,
       big: 550

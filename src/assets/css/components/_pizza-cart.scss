@@ -1,0 +1,152 @@
+/*==================================Cart======================================*/
+//center block
+#pizza-cart {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1040px;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: rgba(6, 5, 50, 0.12) 0 4px 20px;
+}
+
+.rounded-item-btn {
+  @extend .main-btn;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 20px 8px;
+  box-shadow: rgba(6, 5, 50, 0.12) 0 4px 20px;
+  border: 1px solid white;
+  border-radius: 20px;
+  background-color: white;
+  transition: all .3s ease-in-out;
+
+  &.active {
+    border: 1px solid var(--theme-orange);
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 24px;
+      height: 24px;
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' class='selected-icon'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12 20a8 8 0 100-16 8 8 0 000 16zm0 2c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z' fill='%23FF6900'%3E%3C/path%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16.602 7.864a1 1 0 01.2 1.4l-4.576 6.101c-.061.082-.146.197-.23.29a1.346 1.346 0 01-.513.366c-.311.121-.656.121-.967 0a1.346 1.346 0 01-.513-.365c-.084-.094-.17-.209-.23-.29l-2.075-2.767a1 1 0 011.6-1.2l1.701 2.269 4.202-5.604a1 1 0 011.4-.2z' fill='%23FF6900'%3E%3C/path%3E%3C/svg%3E");
+    }
+  }
+
+  &:hover {
+    box-shadow: rgba(6, 5, 50, 0.12) 0 8px 40px;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 500;
+
+    &.money {
+      > span {
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.grid-select {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 160px);
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+}
+
+.pizza-cart__wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .pizza-select {
+    @extend .grid-select;
+    width: 55%;
+
+    .pizza-item {
+      @extend .rounded-item-btn;
+    }
+  }
+
+  .pizza-params {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 45%;
+    padding: 16px;
+    background-color: var(--theme-gray);
+
+    .pizza-size__select {
+      display: flex;
+      margin-top: 16px;
+
+      input {
+        position: absolute !important;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        width: 1px;
+        border: 0;
+        overflow: hidden;
+
+        &:checked + label {
+          background-color: white;
+          box-shadow: rgba(6, 5, 50, 0.19) 0 3px 20px;
+        }
+      }
+
+      label {
+        background-color: #f3f3f7;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1;
+        text-align: center;
+        padding: 8px 16px;
+        margin-right: -1px;
+        transition: all 0.1s ease-in-out;
+        cursor: pointer;
+
+        &:first-of-type {
+          border-radius: 20px 0 0 20px;
+        }
+
+        &:last-of-type {
+          border-radius: 0 20px 20px 0;
+        }
+      }
+    }
+
+    .pizza-toppings__select {
+      @extend .grid-select;
+      padding: 16px 0;
+      grid-template-columns: repeat(auto-fit, 128px);
+
+      .topping-item {
+        @extend .rounded-item-btn;
+        min-height: 200px;
+
+        img {
+          max-height: 90px;
+        }
+      }
+    }
+  }
+}

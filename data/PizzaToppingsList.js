@@ -1,7 +1,8 @@
 export const PizzaToppingsList = [
   {
-    key: 'creamyMozarella',
+    key: 'creamyMozzarella',
     name: 'Cливочная моцарелла',
+    image: 'creamyMozzarella.png',
     calories: {
       small: 20,
       big: 30
@@ -14,6 +15,7 @@ export const PizzaToppingsList = [
   {
     key: 'cheeseSide',
     name: 'Cырный борт',
+    image: 'cheeseSide.png',
     calories: {
       small: 50,
       big: 70
@@ -26,6 +28,7 @@ export const PizzaToppingsList = [
   {
     key: 'cheddarAndParmesan',
     name: 'Чедер и пармезан',
+    image: 'cheddarAndParmesan.png',
     calories: {
       small: 50,
       big: 70
