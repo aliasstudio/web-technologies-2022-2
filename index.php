@@ -1,125 +1,68 @@
-<!-- Задание №1 -->
 <?php
-$a = 10;
-$b = 20;
+function pick_file($file){
+    if($file['name'] == '')
+        return 'Файл не выбран';
 
-function operation($first, $second) {
-    if ($first >= 0 && $second >= 0) {
-        return $first - $second;
-    } elseif ($first < 0 && $second < 0) {
-        return $first * $second;
-    } else {
-        return $first + $second;
-    }
+    $getMime = explode('.', $file['name']);
+    $mime = strtolower(end($getMime));
+    $types = array('jpg', 'png', 'gif', 'bmp', 'jpeg');
+
+    if(!in_array($mime, $types))
+        return 'Недопустимый тип файла';
+
+    return true;
 }
 
-echo operation($a, $b);
+function upload_file($file){
+    copy($file['tmp_name'], 'images/' . mt_rand(0, 10000).'_'.$file['name']);
+}
 ?>
-<br>
-<!-- Задание №2 -->
-<?php
-function operation2(int $a) {
-    switch ($a) {
-        case 0:
-            echo $a++.' ';
-        case 1:
-            echo $a++.' ';
-        case 2:
-            echo $a++.' ';
-        case 3:
-            echo $a++.' ';
-        case 4:
-            echo $a++.' ';
-        case 5:
-            echo $a++.' ';
-        case 6:
-            echo $a++.' ';
-        case 7:
-            echo $a++.' ';
-        case 8:
-            echo $a++.' ';
-        case 9:
-            echo $a++.' ';
-        case 10:
-            echo $a++.' ';
-        case 11:
-            echo $a++.' ';
-        case 12:
-            echo $a++.' ';
-        case 13:
-            echo $a++.' ';
-        case 14:
-            echo $a++.' ';
-        case 15:
-            echo $a++.' ';
-    }
-}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+        <div class="wrapper">
+        <?php
+        if(isset($_FILES['file'])) {
+            $check = pick_file($_FILES['file']);
 
-operation2(7);
-?>
-<br>
-<!-- Задание №3 -->
-<?php
-function opPlus($arg1, $arg2) {
-    return $arg1 + $arg2;
-}
+            if($check === true){
+                upload_file($_FILES['file']);
+                echo "<h3>Файл успешно загружен!</h3>";
+            }
+            else{
+                echo "<h3>$check</h3>";
+            }
+        }
+        ?>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" value="Загрузить файл!">
+        </form>
+        <div class="gallery__wrapper">
+            <?php
+                $path = 'images';
+                $files = array_diff(scandir($path), array('.', '..'));
 
-function opMinus($arg1, $arg2) {
-    return $arg1 - $arg2;
-}
+                foreach($files as $file) {
+                    $preview = $path.'/'.$file;
+                    $image = $path.'/'.$file;
 
-function opMultiply($arg1, $arg2) {
-    return $arg1 * $arg2;
-}
-
-function opDivision($arg1, $arg2) {
-    return $arg1 / $arg2;
-}
-
-//Задание №4
-
-function mathOperation($arg1, $arg2, $operation) {
-    switch ($operation) {
-        case '+':
-            return opPlus($arg1, $arg2);
-        case '-':
-            return opMinus($arg1, $arg2);
-        case '*':
-            return opMultiply($arg1, $arg2);
-        case '/':
-            return opDivision($arg1, $arg2);
-    }
-}
-
-echo mathOperation(5, 3, '-');
-?>
-<br>
-
-<!--Задание №5-->
-<!--1-й способ в html верстке-->
-<h4><?php echo date('Y')?></h4>
-
-<!--2-й способ в верстке через required-->
-<!--$date =  date('Y');-->
-<!--require('site.php');-->
-
-<!--3-ий способ через замену-->
-<!--$content = file_get_contents('index.html');-->
-<!--$content = str_replace("{{ date }}", $date, $content);-->
-<!---->
-<!--echo $content;-->
-
-<br>
-
-<!--Задание №6-->
-<?php
-function power($val, $pow) {
-    if ($pow == 0) {
-        return 1;
-    } else {
-        return power($val, $pow - 1) * $val;
-    }
-}
-
-echo power(3, 4);
-?>
+                    echo '<div class="gallery-item">
+                        <a href="'.$image.'" target="_blank">
+                            <img src="'.$preview.'"/>
+                        </a>
+                      </div>';
+                }
+            ?>
+        </div>
+    </div>
+</body>
+</html>
