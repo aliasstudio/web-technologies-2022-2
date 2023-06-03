@@ -17,34 +17,19 @@ function prepareParams($page, $action) {
             $params['phone'] = 444333;
             break;
 
-        case 'gallery':
-            $params['title'] = 'Галерея';
+        case 'product':
+            doFeedbackAction($action);
+            $id = (int) $_GET['id'];
+            $params['product'] = getProduct($id);
+            $params['feedback'] = getFeedback($id);
             break;
 
         case 'apicatalog':
             echo json_encode(getCatalog(), JSON_UNESCAPED_UNICODE);
             die();
 
-        case 'news':
-            $params['title'] = 'Новости';
-            $params['news'] = getNews();
-            break;
-
-        case 'onenews':
-            $id = (int)$_GET['id'];
-            $news = getOneNews($id);
-            $params['title'] = $news['title'] . '. Новости нашего магазина';
-            $params['news'] = getOneNews($id);
-            break;
-
-        case 'feedback':
-            doFeedbackAction($action);
-            $params['feedback'] = getAllFeedback();
-            $params['title'] = 'Отзывы';
-            break;
-
         default:
-            echo "404";
+            echo '404';
             die();
     }
 

@@ -2,9 +2,9 @@
 
 <div>
     <?php foreach ($catalog as $item): ?>
-        <div>
-            <?=$item['name']?><br>
-            <img src="/img/<?=$item['image']?>" alt="" width="100"><br>
+        <div">
+            <span onclick="redirect('<?= $item['id'] ?>')"><?=$item['name']?></span><br>
+            <img src="/img/<?=$item['image']?>" alt="" width="100" onclick="redirect('<?= $item['id'] ?>')"><br>
             Цена: <?=$item['price']?><br>
             <button>Купить</button>
             <hr>
@@ -12,3 +12,9 @@
     <?php endforeach; ?>
 
 </div>
+
+<script>
+    function redirect(id) {
+        location.href = `/public/product/?id=${id}`;
+    }
+</script>

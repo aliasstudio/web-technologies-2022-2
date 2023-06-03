@@ -1,3 +1,19 @@
 body {
     background-color: aqua;
 }
+
+.feedback-item {
+    position: relative;
+    max-width: 400px;
+}
+
+.feedback-item input[type="text"] {
+    width: 100%;
+}
+
+.feedback-item .delete-form {
+    position: absolute;
+    bottom: 0;
+    right: 250px;
+    margin: 0;
+}
