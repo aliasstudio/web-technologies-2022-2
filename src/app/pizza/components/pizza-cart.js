@@ -55,7 +55,13 @@ export class PizzaCart {
   }
 
   #selectPizza(key) {
+    const toppingBtn = document.querySelectorAll(`${this.#selector} .topping-item`);
+
     this.selectedPizza = this.#pizzaList.get(key);
+    this.selectedPizza.size = this.#selectedSize;
+    this.selectedPizza.clearTopping();
+
+    toppingBtn.forEach(item => item.classList.remove('active'));
   }
 
   #renderPizza() {

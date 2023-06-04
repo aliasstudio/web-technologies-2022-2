@@ -82,4 +82,9 @@ export class Pizza {
     }
     throw new Error('Topping does not exist!');
   }
+
+  //Убрать все топпинги
+  clearTopping() {
+    this.#toppings = [];
+  }
 }
