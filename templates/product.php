@@ -9,7 +9,7 @@
 </div>
 
 <h2>Отзывы</h2>
-<form action="/public/product/addFeedback/" method="post">
+<form action="/public/product/addFeedback/" method="post" class="feedback-item">
     Оставьте отзыв: <br>
     <input type="text" name="name" placeholder="Ваше имя"><br>
     <input type="text" name="text" placeholder="Ваш отзыв"><br>
@@ -18,12 +18,12 @@
 </form>
 
 <?php foreach ($feedback as $value): ?>
+    <br>
     <div class="feedback-item">
         <form action="/public/product/updateFeedback/" method="post">
             <strong>Имя: <?=$value['name']?></strong>
             <br>
             <input type="text" name="text" placeholder="Ваш отзыв" value="<?=$value['text']?>">
-            <input type="hidden" name="name" value="<?=$value['name']?>">
             <input type="hidden" name="productId" value="<?= $product['id'] ?>">
             <input type="hidden" name="id" value="<?= $value['id'] ?>">
             <br>

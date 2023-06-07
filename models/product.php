@@ -3,7 +3,6 @@ function getProduct($id) {
     return getAssocResult("SELECT id, name, image, price, description FROM products WHERE id = {$id}")[0];
 }
 
-
 function getFeedback($id) {
     $sql = "SELECT * FROM feedbacks WHERE productId = {$id} ORDER BY id DESC";
     return getAssocResult($sql);
@@ -11,7 +10,7 @@ function getFeedback($id) {
 
 function addFeedback() {
     extract($_POST);
-    $sql = "INSERT INTO `feedbacks` (`id`, `productId`, `name`, `text`) VALUES (NULL, '{$productId}', '{$name}', '{$text}')";
+    $sql = "INSERT INTO `feedbacks` (`productId`, `name`, `text`) VALUES ('{$productId}', '{$name}', '{$text}')";
 
     executeSql($sql);
     header("Location: /public/product/?id={$productId}");
@@ -19,7 +18,7 @@ function addFeedback() {
 
 function updateFeedback() {
     extract($_POST);
-    $sql = "UPDATE `feedbacks` SET `name`='{$name}',`text`='{$text}' WHERE id = {$id}";
+    $sql = "UPDATE `feedbacks` SET `text`='{$text}' WHERE id = {$id}";
 
     executeSql($sql);
     header("Location: /public/product/?id={$productId}");
@@ -38,6 +37,7 @@ function doFeedbackAction($action) {
         addFeedback();
         die();
     }
+
     if($action === 'updateFeedback') {
         updateFeedback();
         die();
